@@ -1,0 +1,20 @@
+package com.example.coinapp.data.di
+
+import com.example.coinapp.data.service.UpbitWebSocketService
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
+import okhttp3.OkHttpClient
+import javax.inject.Singleton
+
+@Module
+@InstallIn(SingletonComponent::class)
+object WebSocketModule {
+
+    @Provides
+    @Singleton
+    fun provideUpbitWebSocketService(okHttpClient: OkHttpClient): UpbitWebSocketService {
+        return UpbitWebSocketService(okHttpClient)
+    }
+}
